@@ -22,7 +22,7 @@
 	</insert>
 	
 	<select id="listIPO" resultType="com.fsd2020.data.entity.IPOEntity">
-		select * from ipo_detail by open_date_time DESC
+		select * from ipo_detail order by open_date_time DESC
 	</select>
 	
 </mapper>

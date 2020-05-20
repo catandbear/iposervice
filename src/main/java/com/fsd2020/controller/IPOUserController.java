@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +15,14 @@ import com.fsd2020.data.entity.ReturnedEntity;
 import com.fsd2020.data.mapper.IPOMapper;
 
 @RestController
-@RequestMapping("admin/ipo")
+@RequestMapping("user/ipo")
 @CrossOrigin("*")
-public class IPOController {
-
-	private IPOMapper ipoMapper;
+public class IPOUserController {
+	
+private IPOMapper ipoMapper;
 	
 	@Autowired
-	private IPOController(IPOMapper ipoMapper) {
+	private IPOUserController(IPOMapper ipoMapper) {
 		this.ipoMapper = ipoMapper;
 	}
 	
@@ -34,9 +35,8 @@ public class IPOController {
 		return new ReturnedEntity("failed");
 	}
 	
-	@PostMapping("list")
+	@GetMapping("list")
 	public List<IPOEntity> listipo() {
 		return ipoMapper.listIPO();
 	}
-	
 }

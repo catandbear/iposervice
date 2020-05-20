@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class IPOEntity {
 	
+	private int id;
 	private String company_name;
 	private String stock_exchange;
 	private String price_per_share;
