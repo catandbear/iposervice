@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 @Data
 @AllArgsConstructor
 @ToString
 public class IPOEntity {
 	
-	@ID
+	@Id
 	private int id;
 	private String company_name;
 	private String stock_exchange;
