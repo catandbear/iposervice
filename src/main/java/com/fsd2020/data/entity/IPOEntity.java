@@ -6,13 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Data
 @AllArgsConstructor
 @ToString
 public class IPOEntity {
 	
 	@Id
-	private int id;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private Long id;
 	private String company_name;
 	private String stock_exchange;
 	private String price_per_share;

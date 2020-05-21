@@ -2,6 +2,7 @@ package com.fsd2020.controller;
 
 import java.util.List;
 
+import com.fsd2020.repository.IpoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,32 +12,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fsd2020.data.entity.IPOEntity;
-import com.fsd2020.data.entity.ReturnedEntity;
-import com.fsd2020.data.mapper.IPOMapper;
 
 @RestController
 @RequestMapping("user/ipo")
 @CrossOrigin("*")
 public class IPOUserController {
-	
-private IPOMapper ipoMapper;
-	
+
+	private IpoRepository ipoMapper;
+
 	@Autowired
-	private IPOUserController(IPOMapper ipoMapper) {
+	private IPOUserController(IpoRepository ipoMapper) {
 		this.ipoMapper = ipoMapper;
 	}
-	
+
 	@PostMapping("add")
-	private ReturnedEntity addIpo(@RequestBody(required = true) IPOEntity ipo) {
-		int status = ipoMapper.addIPO(ipo);
-		if (status==1) {
-			return new ReturnedEntity("ok");
-		}
-		return new ReturnedEntity("failed");
+	private IPOEntity addIpo(@RequestBody(required = true) IPOEntity ipo) {
+		IPOEntity ipoEntity = ipoMapper.save(ipo);
+
+		return ipoEntity;
 	}
-	
+
 	@GetMapping("list")
-	public List<IPOEntity> listipo() {
-		return ipoMapper.listIPO();
+	public Iterable<IPOEntity> listipo() {
+		return ipoMapper.findAll();
 	}
 }
