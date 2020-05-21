@@ -7,10 +7,10 @@ import lombok.ToString;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class IPOEntity {
 	
+	@ID
 	private int id;
 	private String company_name;
 	private String stock_exchange;
